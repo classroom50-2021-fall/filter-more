@@ -6,7 +6,6 @@
 
 int main(int argc, char *argv[])
 {
-
     // Define allowable filters
     char *filters = "begr";
 
@@ -28,7 +27,7 @@ int main(int argc, char *argv[])
     // Ensure proper usage
     if (argc != optind + 2)
     {
-        printf("Usage: filter [flag] infile outfile\n");
+        printf("Usage: ./filter [flag] infile outfile\n");
         return 3;
     }
 
@@ -71,6 +70,7 @@ int main(int argc, char *argv[])
         return 6;
     }
 
+    // Get image's dimensions
     int height = abs(bi.biHeight);
     int width = bi.biWidth;
 
@@ -143,11 +143,8 @@ int main(int argc, char *argv[])
     // Free memory for image
     free(image);
 
-    // Close infile
+    // Close files
     fclose(inptr);
-
-    // Close outfile
     fclose(outptr);
-
     return 0;
 }
